@@ -50,13 +50,16 @@ def MVLR(train_filename, test_filename, M):
 	
 	return M_values, train_errors, test_errors
 
-def plot(M_values, train_errors, test_errors):
+def plot(M_values, train_errors, test_errors, title):
 	plt.plot(M_values, train_errors, label = 'train_error')
 	plt.plot(M_values, test_errors, label = 'test_error')
 	plt.xlabel("M")
 	plt.ylabel("Average Error")
 	plt.legend(loc='best')
+	plt.title(title)
+	plt.savefig('Average_error_vs_M.png')
 	plt.show()
+	plt.close()
 	return 0
 	
 # Main function
@@ -68,4 +71,5 @@ print M_values
 print train_errors
 print test_errors
 
-plot(M_values, train_errors, test_errors)
+title = 'Linear regression'
+plot(M_values, train_errors, test_errors, title)
